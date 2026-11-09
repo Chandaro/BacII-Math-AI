@@ -34,6 +34,8 @@ Each row has `problem_km`, `solution_km`, `answer_latex`, `chapter`, `topic`, `s
 
 ![One dataset row rendered: a complex-numbers question, its worked solution in Khmer, the figure, and the other fields](docs/images/sample.png)
 
+![Six random questions from different chapters with their stored answers, and eight generated figures](docs/images/gallery.png)
+
 The `*_km_chat.jsonl` files hold the same rows as user/assistant messages, ready for chat fine-tuning. Some answers there end with TikZ graph code; Run 8 showed it is better to strip it before training (see results below).
 
 **Where the rows come from.** All rows are original. They were written by the generators in `gen/` in the style of BacII papers, and are not real exam items or student scripts. Wording and terms follow the style guides in `sources/`.
@@ -45,6 +47,10 @@ The `*_km_chat.jsonl` files hold the same rows as user/assistant messages, ready
 `finetune/adapters/run8-step2400-half/` is a LoRA adapter (21 MB) for `mlx-community/gemma-3-12b-it-qat-4bit`. It was trained on `finetune/run8_data/`: 2,410 rows from all 8 chapters, with graph code removed.
 
 Training settings: rank 8, last 8 layers, learning rate 3e-5, 2,400 steps, batch 1, max length 2,304, prompt masked. It is used at **half strength** (scale 10), which is already set in `adapter_config.json`.
+
+![The Run 8 training dashboard: 2,400 steps at 3 seconds per step, peak memory 16.1 GB, and the training and validation loss curves](docs/images/train.png)
+
+*Run 8 trained in about 2 hours on an M1 Max, using 16 GB of memory at peak.*
 
 ### Results (blind-scored)
 
@@ -65,6 +71,10 @@ Here is the difference on one test question. Both models get the right answer:
 
 ![The same 3D vectors question answered by the Run 8 adapter in clean Khmer, and by the original Gemma 3 with a chatbot opener, Arabic and English words and code blocks](docs/images/compare.png)
 
+And live in the chat page, on a conics question. The adapter answers correctly in 166 tokens; the original Gemma 3 writes a parabola that opens the wrong way ($y=x^2$), partly in English, and the answer check catches it:
+
+![Chat page with two columns: the Run 8 adapter answers y² = 8x and gets a green check; the original Gemma 3 answers y = x² and gets a red check-failed badge](docs/images/cols.png)
+
 Other things tried, on the same data and graders:
 
 ![Correct answers on the integrals test: 12B fine-tuned 48, 4B original 31, 4B fine-tuned 24 and 6, 12B pruned 1](docs/images/size.png)
@@ -82,6 +92,10 @@ Full scores are in `finetune/results/`.
 - **"Are these four points in one plane?" questions:** 5 of 8 wrong.
 - **Building a conic from given facts,** for example from its foci and eccentricity.
 - **It sometimes repeats its working in a second math block,** adds English words, or invents Khmer terms.
+
+Here is a real failure. Asked for an ellipse with foci $(\pm2;0)$ and $e=\frac12$, the model takes the distance between the foci as the major axis, mixes up $a$ and $c$, decides no ellipse exists, and repeats itself. The answer check flags it with the correct answer:
+
+![The model gets an ellipse question wrong and repeats itself; the answer check shows a red Check failed badge with the correct answer x²/16 + y²/12 = 1](docs/images/fail.png)
 
 ## Quick start (Apple silicon Mac, 32 GB+ memory)
 
