@@ -1,0 +1,33 @@
+{
+ "rows": 19684,
+ "pipeline": {
+  "read": 21011,
+  "math_tidied": 0,
+  "math_dup": 1327,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "prob_counting": 1871,
+  "prob_events": 7000,
+  "prob_conditional": 4711,
+  "prob_distribution": 4824,
+  "prob_binomial": 1278
+ },
+ "by_grade": {
+  "12": 19684
+ },
+ "by_exam_fit": {
+  "bacii_seen": 19669,
+  "textbook": 15
+ },
+ "by_difficulty": {
+  "easy": 215,
+  "medium": 15686,
+  "bacii": 3783
+ },
+ "with_diagram": 0,
+ "png_files": 0,
+ "diagram_types": {},
+ "hand_written": 0,
+ "avg_solution_chars": 287
+}

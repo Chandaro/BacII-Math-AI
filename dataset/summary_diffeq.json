@@ -1,0 +1,29 @@
+{
+ "rows": 13201,
+ "pipeline": {
+  "read": 13663,
+  "math_tidied": 811,
+  "math_dup": 462,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "de_first_order": 6236,
+  "de_second_order": 6965
+ },
+ "by_grade": {
+  "12": 13201
+ },
+ "by_exam_fit": {
+  "bacii_seen": 13201
+ },
+ "by_difficulty": {
+  "easy": 2624,
+  "medium": 2411,
+  "bacii": 8166
+ },
+ "with_diagram": 0,
+ "png_files": 0,
+ "diagram_types": {},
+ "hand_written": 0,
+ "avg_solution_chars": 426
+}

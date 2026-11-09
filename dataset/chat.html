@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chat test</title>
+<link rel="stylesheet" href="preview_assets/katex.min.css">
+<style>
+:root{color-scheme:light;--bg:#f4f3ef;--surface:#fcfcfb;--raised:#ffffff;--line:#e4e2dc;--grid:#ecebe6;--ink:#0b0b0b;--ink2:#52514e;--ink3:#7a7974;--track:#eceae4;--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--good:#008300;--bad:#c93635;--term:#191918;--termink:#d9d8d1;--shadow:0 1px 2px rgba(20,20,10,.04),0 12px 32px -18px rgba(20,20,10,.18)}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme=light])){color-scheme:dark;--bg:#121211;--surface:#1a1a19;--raised:#20201f;--line:#2e2e2c;--grid:#272725;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#918f86;--track:#2b2b29;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--good:#3fb950;--bad:#e66767;--term:#0e0e0d;--shadow:none}}
+:root[data-theme=dark]{color-scheme:dark;--bg:#121211;--surface:#1a1a19;--raised:#20201f;--line:#2e2e2c;--grid:#272725;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#918f86;--track:#2b2b29;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--good:#3fb950;--bad:#e66767;--term:#0e0e0d;--shadow:none}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Hanuman,"Khmer Sangam MN",sans-serif;-webkit-font-smoothing:antialiased}
+.app{height:100dvh;padding:16px 18px 12px;display:flex;flex-direction:column;gap:12px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.eyebrow{font-size:12.5px;color:var(--ink3)}h1{margin:1px 0 0;font-size:23px;line-height:1.2;font-weight:650;letter-spacing:-.018em}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;align-items:center}.tabs a{color:var(--ink2);text-decoration:none;font-size:13px;padding:5px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}.tabs a:hover{color:var(--ink)}.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button{font:inherit;font-size:13px;color:var(--ink2);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 11px;cursor:pointer}button:hover{color:var(--ink)}
+.grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,minmax(220px,1fr));grid-template-rows:minmax(0,1fr);gap:10px;overflow-x:auto}.grid.one{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}.grid.one .p:not(.big){display:none}
+.p{min-width:0;min-height:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;box-shadow:var(--shadow);overflow:hidden}.p.busy{border-color:var(--s1)}
+.ph{display:flex;align-items:flex-start;gap:4px 6px;padding:8px 10px 8px 12px;min-height:136px;border-bottom:1px solid var(--line)}.ph div{min-width:0;flex:1}.ph b{display:block;font-weight:650;font-size:15px;letter-spacing:-.01em}.badges{display:flex;gap:4px;margin-bottom:4px;white-space:nowrap}.badge,.size{font-size:11.5px;font-weight:620;line-height:1;padding:4px 6px;border-radius:6px}.size{color:var(--ink);background:var(--track)}.badge{color:var(--ink);background:var(--track)}.ft .badge{background:var(--s1);color:#fff}.mix .badge{background:none;box-shadow:inset 0 0 0 1.5px var(--s1)}.p.ft{border-top:3px solid var(--s1)}.p.mix{border-top:3px solid color-mix(in srgb,var(--s1) 45%,var(--line))}.p.og{border-top:3px solid var(--ink3)}.ph small{display:block;color:var(--ink3);font-size:11.5px;line-height:1.3}.ph button{padding:2px 9px;font-size:12px}
+.st{display:block;min-height:17px;margin-top:2px;font-size:12px;color:var(--ink3)}.st.live{color:var(--s1)}.st.warn{color:var(--bad)}
+.log{flex:1;min-height:0;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:12px}.hint{margin:auto;color:var(--ink3);font-size:13px}
+.u{align-self:flex-end;max-width:90%;background:var(--track);border-radius:12px 12px 4px 12px;padding:6px 11px;font-size:13.5px;overflow-wrap:anywhere}
+.a{line-height:1.65;font-size:14px;overflow-wrap:anywhere}.a .katex-display{overflow-x:auto;overflow-y:hidden;margin:.4em 0;padding:.15em 0}.a h3{font-size:15px;margin:.5em 0 .15em}
+.chk{font-size:12.5px;margin-top:8px;padding:6px 9px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink2)}.chk b{font-weight:600}.chk.ok b{color:var(--good)}.chk.bad b{color:var(--bad)}.chk.part b{color:var(--s2)}.chk[hidden]{display:none}
+.meta{font-size:12px;color:var(--ink3);margin-top:5px}.meta.warn{color:var(--bad)}
+details{border:1px solid var(--line);border-radius:9px;padding:5px 10px;margin-bottom:8px;color:var(--ink2);font-size:13.5px}summary{cursor:pointer;font-size:12.5px;color:var(--ink3)}
+.ex{display:flex;gap:7px;flex-wrap:wrap}.ex[hidden]{display:none}.ex button{border-radius:9px;padding:5px 11px}
+form{display:flex;gap:8px;align-items:flex-end}textarea{flex:1;font:inherit;color:var(--ink);background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:10px 13px;resize:none;min-height:46px;max-height:150px;outline-offset:1px}textarea:focus{outline:2px solid var(--s1);border-color:transparent}
+.send{height:46px;padding:0 18px;font-size:15px;border-radius:12px;background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}.send:hover{color:var(--bg)}.send.stop{background:var(--bad);border-color:var(--bad);color:#fff}
+.foot{font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style></head><body><div class="app">
+<header><div><div class="eyebrow">Khmer BacII math · runs on this Mac</div><h1>Chat test</h1></div><nav class="tabs"><button type="button" id="clear">Clear</button><button type="button" id="theme" aria-label="Switch light or dark">Theme</button></nav></header>
+<div class="grid" id="grid"></div>
+<div class="ex" id="ex"></div>
+<form id="f"><textarea id="q" rows="1" placeholder="Ask once. All three models answer. Use $...$ for formulas." aria-label="Question"></textarea><button class="send" id="send">Ask all three</button></form>
+<div class="foot"><span>Answers can be wrong. For testing only, not for students yet. Final answers are checked against the verified dataset or SymPy where possible; the check reads only the final lines, so it can miss.</span><span>The Mac runs one model at a time, so the panels fill in turn. <span id="sv"></span></span></div>
+</div>
+<script src="preview_assets/katex.min.js"></script>
+<script>
+const $=i=>document.getElementById(i),esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const M={half:["Daro Dai Chav 1","Stronger math · old test 35 of 60 · new-chapter test 51 of 60","Fine-tuned","ft"],step1000:["Daro Dai Chav 2","Neater exam layout · old test 29 of 60 · new chapters not tested","Fine-tuned","ft"],run8:["Daro Dai Chav 5 · Best pick","All 8 chapters, incl. conics & 3D geometry · no graph code · conics & 3D test 26 of 40 · integrals test 49 of 60 · old test 40 of 60","Fine-tuned","ft"],run6:["Daro Dai Chav 4","Integrals, diff. equations, probability · Correct terms, part headings, word-fix on · old test 40 of 60 · new-chapter test 47 of 60","Fine-tuned","ft"],base:["Gemma 3","Google's model · old test 46 of 60 · new-chapter test 53 of 60","Original model","og"],two_step:["Gemma 3 two-step","Solves, then rewrites its own answer · not scored","Original model","og"]};
+const ORDER=["run8","base","two_step"];
+const EX=["គណនាដេរីវេនៃអនុគមន៍ $f(x)=x^{3}-3x+1$ ។","ដោះស្រាយសមីការ $z^{2}-2z+5=0$ ក្នុងសំណុំចំនួនកុំផ្លិច ។","គណនាលីមីត $\\lim_{x\\to 2}\\frac{x^{2}-4}{x-2}$ ។"];
+let hist={},ctl=null,live=0;
+const tex=(s,d)=>{try{return katex.renderToString(s,{displayMode:d,throwOnError:false,strict:false})}catch(e){return esc(s)}};
+const inline=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
+function fixText(t){let p;do{p=t;t=t.replace(/\\text\{([^{}$]*)\$([^$]+?)\$([^{}$]*)\}/g,(m,a,b,c)=>"\\text{"+a+"}"+b+(c?"\\text{"+c+"}":""))}while(t!==p);return t}
+function render(t){t=fixText(t);let o="",re=/\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\$([^$\n]+?)\$|\\\(([^\n]+?)\\\)/g,i=0,m;const txt=s=>s.split("\n").map(l=>{const h=l.match(/^#{1,4}\s+(.*)/);return h?`<h3>${inline(h[1])}</h3>`:inline(l)}).join("<br>").replace(/(<\/h3>)<br>/g,"$1").replace(/<br>(<h3>)/g,"$1");
+ while(m=re.exec(t)){o+=txt(t.slice(i,m.index));o+=m[1]||m[2]?tex(m[1]||m[2],true):tex(m[3]||m[4],false);i=re.lastIndex}return o+txt(t.slice(i))}
+$("grid").innerHTML=ORDER.map(k=>[k,M[k]]).map(([k,v])=>`<section class="p ${v[3]}" id="p_${k}" aria-label="${v[0]}, ${v[2]}"><div class="ph"><div><span class="badges"><span class="badge">${v[2]}</span><span class="size">12B</span></span><b>${v[0]}</b><small>${v[1]}</small><span class="st" id="s_${k}"></span></div><button type="button" data-k="${k}">Expand</button></div><div class="log" id="l_${k}" aria-live="polite"></div></section>`).join("");
+$("grid").onclick=e=>{const b=e.target.closest("button[data-k]");if(!b)return;const p=$("p_"+b.dataset.k),on=!p.classList.contains("big");document.querySelectorAll(".p").forEach(x=>x.classList.remove("big"));p.classList.toggle("big",on);$("grid").classList.toggle("one",on);document.querySelectorAll("button[data-k]").forEach(x=>x.textContent="Expand");if(on)b.textContent="Back to columns"};
+$("ex").innerHTML=EX.map((x,i)=>`<button type="button" data-i="${i}">${render(x)}</button>`).join("");
+$("ex").onclick=e=>{const b=e.target.closest("button");if(b&&!ctl){$("q").value=EX[b.dataset.i];send()}};
+function reset(){hist={};for(const k of ORDER){hist[k]=[];$("l_"+k).innerHTML='<div class="hint">Waiting for your question</div>';status(k,"")}$("ex").hidden=false}
+function status(k,t,c){const s=$("s_"+k);s.textContent=t;s.className="st "+(c||"")}
+const down=l=>{if(l.scrollHeight-l.scrollTop-l.clientHeight<120)l.scrollTop=l.scrollHeight};
+const WHY={loop:"Stopped early: the answer started repeating.",limit:"Stopped at the 2,500-token limit.",stopped:"Stopped."},ST={loading:"Loading model",solving:"Original model is solving",writing:"Writing"};
+function panel(k,text){const l=$("l_"+k);l.querySelector(".hint")?.remove();const u=document.createElement("div");u.className="u";u.innerHTML=render(text);const a=document.createElement("div");a.className="a";a.innerHTML='<details hidden><summary>Original model\'s draft</summary><div class="d"></div></details><div class="b"></div><div class="chk" hidden></div><div class="meta"></div>';l.append(u,a);l.scrollTop=l.scrollHeight;return a}
+function finished(){if(--live==0){ctl=null;$("send").textContent="Ask all three";$("send").classList.remove("stop")}}
+function checkHTML(e){const x=e.expected?render("$"+e.expected+"$"):"",src=e.source=="sympy"?"SymPy's result":"the verified answer";
+ if(e.status=="match"){return `<b>✓ Answer checked</b> · the final answer matches ${src}`}
+ if(e.status=="partial")return `<b>◐ Partly checked</b> · some parts match ${src}: ${x}`;
+ if(e.status=="mismatch")return e.source=="sympy"?`<b>✗ Check failed</b> · SymPy gets ${x}`:`<b>✗ Check failed</b> · the verified answer ${x} is not in this solution`;
+ return "Not checked automatically · this question is not in the dataset and is not a single integral, limit or derivative"}
+async function stream(k,r,a){const l=$("l_"+k),det=a.querySelector("details"),D=a.querySelector(".d"),B=a.querySelector(".b"),meta=a.querySelector(".meta"),C=a.querySelector(".chk");let body="",draft="",dirty=false,fin=false;
+ const paint=()=>{if(dirty){dirty=false;B.innerHTML=render(body);D.innerHTML=render(draft);down(l)}},timer=setInterval(paint,220);
+ let closed=false;const end=(msg,st,warn)=>{if(closed)return;closed=true;dirty=true;paint();clearInterval(timer);meta.className="meta"+(warn?" warn":"");meta.textContent=msg;status(k,st,warn?"warn":"");$("p_"+k).classList.remove("busy");finished()};
+ try{const rd=r.body.getReader(),dec=new TextDecoder;let buf="";
+  while(!fin){const{value,done}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});let i;
+   while((i=buf.indexOf("\n"))>=0){const e=JSON.parse(buf.slice(0,i));buf=buf.slice(i+1);
+    if(e.t=="status"){status(k,ST[e.d]||e.d,"live");$("p_"+k).classList.add("busy")}
+    else if(e.t=="draft"){draft+=e.d;det.hidden=false;dirty=true}
+    else if(e.t=="text"){status(k,"Writing","live");$("p_"+k).classList.add("busy");body+=e.d;dirty=true}
+    else if(e.t=="check"){C.hidden=false;C.innerHTML=checkHTML(e);C.className="chk "+({match:"ok",partial:"part",mismatch:"bad"}[e.status]||"")}
+    else if(e.t=="end"&&e.reason=="stopped"&&!e.tokens){fin=true;if(body)hist[k].push({role:"assistant",content:body});else hist[k].pop();end(WHY.stopped,"Stopped")}
+    else if(e.t=="end"){fin=true;hist[k].push({role:"assistant",content:body});const s=e.seconds?Math.round(e.tokens/e.seconds):0,bad=e.reason=="loop"||e.reason=="limit";end((WHY[e.reason]?WHY[e.reason]+" ":"")+`${e.tokens.toLocaleString()} tokens · ${e.seconds} s · ${s} tokens per second`,bad?"Cut off":"Done",bad)}
+    else if(e.t=="error"){fin=true;hist[k].pop();end("Error: "+e.d,"Error",true)}}}
+  if(!fin){hist[k].pop();end("The connection ended before the answer finished.","Error",true)}
+ }catch(e){if(fin)return;const ab=e.name=="AbortError";if(body)hist[k].push({role:"assistant",content:body});else hist[k].pop();end(ab?WHY.stopped:"The chat server isn't responding.",ab?"Stopped":"Error",!ab)}}
+async function send(){const text=$("q").value.trim();if(!text||ctl)return;$("q").value="";$("q").style.height="";$("ex").hidden=true;
+ ctl=new AbortController;live=ORDER.length;$("send").textContent="Stop all";$("send").classList.add("stop");const sig=ctl.signal;
+ const A={};ORDER.forEach((k,i)=>{hist[k].push({role:"user",content:text});A[k]=panel(k,text);status(k,"In line "+(i+1)+" of "+ORDER.length,"live")});
+ for(const k of ORDER){try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:k,messages:hist[k]}),signal:sig});if(!r.ok)throw Error("HTTP "+r.status);stream(k,r,A[k])}
+  catch(e){const ab=e.name=="AbortError";hist[k].pop();A[k].querySelector(".meta").textContent=ab?WHY.stopped:"The chat server isn't responding.";status(k,ab?"Stopped":"Error",ab?"":"warn");finished()}}}
+const halt=async()=>{const c=ctl;try{await fetch("/api/stop",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"})}catch(e){}c&&c.abort()};
+$("f").onsubmit=e=>{e.preventDefault();ctl?halt():send()};
+$("q").onkeydown=e=>{if(e.key=="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!ctl)send()}};
+$("q").oninput=e=>{const t=e.target;t.style.height="";t.style.height=t.scrollHeight+2+"px"};
+$("clear").onclick=async()=>{if(ctl)await halt();setTimeout(reset,80)};
+$("theme").onclick=()=>{const d=document.documentElement,c=d.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");d.dataset.theme=c=="dark"?"light":"dark"};
+async function ping(){try{const s=await(await fetch("/api/status")).json();$("sv").textContent="Models in memory: "+s.loaded.length}catch(e){$("sv").textContent="Chat server is off"}}
+reset();ping();setInterval(ping,8000);
+</script></body></html>

@@ -1,0 +1,37 @@
+{
+ "rows": 17984,
+ "pipeline": {
+  "read": 19951,
+  "math_tidied": 0,
+  "math_dup": 1967,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "integral_primitive": 6901,
+  "integral_definite": 3288,
+  "integral_parts": 1213,
+  "integral_trig": 170,
+  "integral_rational": 3272,
+  "integral_area": 2955,
+  "integral_volume": 185
+ },
+ "by_grade": {
+  "12": 17984
+ },
+ "by_exam_fit": {
+  "bacii_seen": 17063,
+  "textbook": 921
+ },
+ "by_difficulty": {
+  "easy": 6497,
+  "medium": 4896,
+  "bacii": 6591
+ },
+ "with_diagram": 2955,
+ "png_files": 2955,
+ "diagram_types": {
+  "graph": 2955
+ },
+ "hand_written": 0,
+ "avg_solution_chars": 362
+}

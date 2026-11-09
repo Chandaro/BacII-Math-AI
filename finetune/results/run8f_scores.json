@@ -1,0 +1,90 @@
+{
+ "C run8-step2400-half": {
+  "n": 40,
+  "correct": 26,
+  "partial": 7,
+  "wrong": 7,
+  "unfinished": 0,
+  "steps": 1.27,
+  "chapters": {
+   "conic": 11,
+   "space": 15
+  },
+  "khmer": 1.82,
+  "terms": 1.75,
+  "format": 1.62,
+  "foreign": 3,
+  "loops": 16
+ },
+ "C run8-step2400-full": {
+  "n": 40,
+  "correct": 9,
+  "partial": 7,
+  "wrong": 24,
+  "unfinished": 0,
+  "steps": 0.4,
+  "chapters": {
+   "conic": 3,
+   "space": 6
+  },
+  "khmer": 2.02,
+  "terms": 2.35,
+  "format": 2.27,
+  "foreign": 1,
+  "loops": 1
+ },
+ "B run8-step2400-full": {
+  "n": 60,
+  "correct": 26,
+  "partial": 2,
+  "wrong": 28,
+  "unfinished": 4,
+  "steps": 0.83,
+  "chapters": {
+   "integral": 8,
+   "diffeq": 9,
+   "probability": 9
+  },
+  "khmer": 2.27,
+  "terms": 2.2,
+  "format": 2.08,
+  "foreign": 1,
+  "loops": 4
+ },
+ "B run8-step2400-half": {
+  "n": 60,
+  "correct": 49,
+  "partial": 1,
+  "wrong": 7,
+  "unfinished": 3,
+  "steps": 1.68,
+  "chapters": {
+   "integral": 17,
+   "diffeq": 15,
+   "probability": 17
+  },
+  "khmer": 2.0,
+  "terms": 1.97,
+  "format": 1.77,
+  "foreign": 16,
+  "loops": 16
+ },
+ "OLD run8-step2400-half": {
+  "n": 60,
+  "correct": 39,
+  "partial": 11,
+  "wrong": 8,
+  "unfinished": 2,
+  "steps": 1.38,
+  "chapters": {}
+ },
+ "OLD run8-step2400-full": {
+  "n": 60,
+  "correct": 27,
+  "partial": 16,
+  "wrong": 17,
+  "unfinished": 0,
+  "steps": 0.87,
+  "chapters": {}
+ }
+}

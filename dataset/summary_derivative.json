@@ -1,0 +1,45 @@
+{
+ "rows": 15937,
+ "pipeline": {
+  "read": 15940,
+  "math_tidied": 3,
+  "tables_given_double_bar": 186,
+  "math_dup": 3,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "applications": 1214,
+  "function_study": 889,
+  "rules": 2294,
+  "steps": 5817,
+  "tangent": 1644,
+  "transcendental": 2074,
+  "variation": 2005
+ },
+ "by_grade": {
+  "12": 15937
+ },
+ "by_exam_fit": {
+  "textbook": 1214,
+  "bacii_seen": 14723
+ },
+ "by_difficulty": {
+  "easy": 1222,
+  "medium": 4729,
+  "hard": 2107,
+  "bacii": 2062,
+  "1": 2412,
+  "2": 2100,
+  "3": 1305
+ },
+ "with_diagram": 3810,
+ "png_files": 1022,
+ "diagram_types": {
+  "figure": 226,
+  "graph": 2020,
+  "variation_table": 2095,
+  "sign_table": 1781
+ },
+ "hand_written": 173,
+ "avg_solution_chars": 632
+}

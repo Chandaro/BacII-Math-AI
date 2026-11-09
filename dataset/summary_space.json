@@ -1,0 +1,31 @@
+{
+ "rows": 14800,
+ "pipeline": {
+  "read": 14800,
+  "math_tidied": 7,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "space_vector": 2600,
+  "space_product": 3700,
+  "space_plane": 3700,
+  "space_line": 2500,
+  "space_distance": 2300
+ },
+ "by_grade": {
+  "12": 14800
+ },
+ "by_exam_fit": {
+  "bacii_seen": 14800
+ },
+ "by_difficulty": {
+  "easy": 5000,
+  "medium": 7400,
+  "bacii": 2400
+ },
+ "with_diagram": 0,
+ "png_files": 0,
+ "diagram_types": {},
+ "hand_written": 0,
+ "avg_solution_chars": 570
+}

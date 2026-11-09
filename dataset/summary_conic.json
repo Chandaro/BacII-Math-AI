@@ -1,0 +1,31 @@
+{
+ "rows": 7843,
+ "pipeline": {
+  "read": 7843,
+  "math_tidied": 0,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "conic_parabola": 3228,
+  "conic_ellipse": 2052,
+  "conic_hyperbola": 2142,
+  "conic_tangent": 170,
+  "conic_line": 251
+ },
+ "by_grade": {
+  "12": 7843
+ },
+ "by_exam_fit": {
+  "bacii_seen": 7843
+ },
+ "by_difficulty": {
+  "medium": 5035,
+  "easy": 301,
+  "bacii": 2507
+ },
+ "with_diagram": 0,
+ "png_files": 0,
+ "diagram_types": {},
+ "hand_written": 0,
+ "avg_solution_chars": 563
+}

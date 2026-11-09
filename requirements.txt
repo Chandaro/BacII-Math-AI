@@ -1,0 +1,6 @@
+# Dataset generators and answer check
+sympy==1.14.0
+antlr4-python3-runtime==4.11.1
+# Fine-tuning, tests and chat (Apple silicon Mac)
+mlx==0.32.4
+mlx-lm==0.32.2

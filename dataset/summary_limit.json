@@ -1,0 +1,42 @@
+{
+ "rows": 8969,
+ "pipeline": {
+  "read": 9061,
+  "math_tidied": 134,
+  "math_dup": 91,
+  "exact_dup": 1,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "limit_algebraic": 1546,
+  "limit_continuity": 1230,
+  "steps": 4695,
+  "limit_transcendental": 1498
+ },
+ "by_grade": {
+  "12": 8806,
+  "11": 163
+ },
+ "by_exam_fit": {
+  "bacii_seen": 7881,
+  "textbook": 1088
+ },
+ "by_difficulty": {
+  "bacii": 1212,
+  "easy": 576,
+  "medium": 1727,
+  "hard": 759,
+  "1": 2489,
+  "2": 2206
+ },
+ "with_diagram": 457,
+ "png_files": 320,
+ "diagram_types": {
+  "graph": 319,
+  "figure": 2,
+  "sign_table": 39,
+  "variation_table": 98
+ },
+ "hand_written": 185,
+ "avg_solution_chars": 534
+}

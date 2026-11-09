@@ -1,0 +1,39 @@
+{
+ "rows": 9914,
+ "pipeline": {
+  "read": 10059,
+  "math_tidied": 141,
+  "math_dup": 145,
+  "failed_katex": 0
+ },
+ "by_topic": {
+  "complex_algebra": 1550,
+  "complex_geometry": 1184,
+  "complex_polar": 1670,
+  "steps": 5510
+ },
+ "by_grade": {
+  "11": 4404,
+  "12": 5510
+ },
+ "by_exam_fit": {
+  "bacii_seen": 8548,
+  "textbook": 1366
+ },
+ "by_difficulty": {
+  "easy": 733,
+  "medium": 1589,
+  "hard": 1071,
+  "bacii": 1011,
+  "1": 1314,
+  "2": 2231,
+  "3": 1965
+ },
+ "with_diagram": 1359,
+ "png_files": 409,
+ "diagram_types": {
+  "figure": 1359
+ },
+ "hand_written": 196,
+ "avg_solution_chars": 630
+}
