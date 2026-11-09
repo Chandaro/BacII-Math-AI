@@ -1,6 +1,8 @@
-# Khmer BacII Math
+# BacII Math AI
 
-A Khmer-language math dataset in the style of Cambodia's Grade 12 BacII exam, and a small model adapter trained on it.
+**Open Khmer math AI for Cambodia's BacII exam: 108K worked solutions and a fine-tuned Gemma 3 model.**
+
+A Khmer-language math dataset in the style of Cambodia's Grade 12 BacII exam, and a model adapter trained on it.
 
 - **108,332 exercises with full worked solutions in Khmer**, math in LaTeX, across 8 BacII chapters.
 - **Every answer is computed by SymPy.** No language model wrote a solution.

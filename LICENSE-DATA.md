@@ -8,6 +8,6 @@ You may share and adapt them for any purpose, including commercially, as long as
 
 Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
 
-Suggested credit: *Khmer BacII Math dataset, Romduol (2026), CC BY 4.0.*
+Suggested credit: *BacII Math AI dataset, Romduol (2026), CC BY 4.0. https://github.com/Chandaro/BacII-Math-AI*
 
 The code is under the MIT licence (`LICENSE`). The model adapter is under the Gemma terms (`NOTICE-GEMMA.md`).
