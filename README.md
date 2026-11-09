@@ -9,7 +9,13 @@ A Khmer-language math dataset in the style of Cambodia's Grade 12 BacII exam, an
 
 > **For testing and research only.** The model still makes mistakes, for example 26 of 40 right on conics and 3D geometry. Do not show its answers to students without a teacher checking them.
 
+![The local chat page: the model answers a 3D vectors question in Khmer, and the answer check confirms the final answer](docs/images/chat.png)
+
+*The chat page running on a Mac. The model answers in Khmer BacII style, and the answer check confirms the final answer against the verified dataset.*
+
 ## Dataset
+
+![Rows per chapter: 108,332 exercises across 8 BacII chapters](docs/images/dataset.png)
 
 | Chapter | File | Rows |
 |---|---|---|
@@ -23,6 +29,8 @@ A Khmer-language math dataset in the style of Cambodia's Grade 12 BacII exam, an
 | 3D space geometry | `dataset/space_km.jsonl` | 14,800 |
 
 Each row has `problem_km`, `solution_km`, `answer_latex`, `chapter`, `topic`, `subtopic`, `difficulty`, `diagrams`, `checks`, `provenance` and `exam_fit`. See `SCHEMA.md` for the full schema.
+
+![One dataset row rendered: a complex-numbers question, its worked solution in Khmer, the figure, and the other fields](docs/images/sample.png)
 
 The `*_km_chat.jsonl` files hold the same rows as user/assistant messages, ready for chat fine-tuning. Some answers there end with TikZ graph code; Run 8 showed it is better to strip it before training (see results below).
 
@@ -40,6 +48,8 @@ Training settings: rank 8, last 8 layers, learning rate 3e-5, 2,400 steps, batch
 
 Graders saw anonymous answers in shuffled order and checked every final answer against the stored answer.
 
+![Correct answers on three tests for Gemma 3 12B, Run 8 at half strength and Run 8 at full strength, plus Khmer quality scores](docs/images/results.png)
+
 | Test | Gemma 3 12B | Run 8, half (this adapter) | Run 8, full strength |
 |---|---|---|---|
 | Conics & 3D geometry (40) | 28 | **26** | 9 |
@@ -49,12 +59,18 @@ Graders saw anonymous answers in shuffled order and checked every final answer a
 
 Gemma 3 gets slightly more answers right but writes poor Khmer. The adapter writes much better Khmer and BacII layout. At full strength the Khmer is best but the math falls apart.
 
+Here is the difference on one test question. Both models get the right answer:
+
+![The same 3D vectors question answered by the Run 8 adapter in clean Khmer, and by the original Gemma 3 with a chatbot opener, Arabic and English words and code blocks](docs/images/compare.png)
+
 Other things tried, on the same data and graders:
+
+![Correct answers on the integrals test: 12B fine-tuned 48, 4B original 31, 4B fine-tuned 24 and 6, 12B pruned 1](docs/images/size.png)
 
 | Tried | Result |
 |---|---|
 | Gemma 3 4B, fine-tuned | 6–24 of 60 on the integrals test: too small |
-| Gemma 3 12B with 8 of 48 layers pruned | 0–1 of 60: broken |
+| Gemma 3 12B with 6 of 48 layers pruned, then retrained | 0–1 of 60: broken |
 | Keeping TikZ graph code in the answers (Run 7) | Same accuracy, but it adds graph code and repeats itself |
 
 Full scores are in `finetune/results/`.
