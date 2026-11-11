@@ -1,4 +1,4 @@
-# BacII Math AI
+# BacII Math AI for Cambodia 
 
 **Open Khmer math AI for Cambodia's BacII exam: 108K worked solutions and a fine-tuned Gemma 3 model.**
 
